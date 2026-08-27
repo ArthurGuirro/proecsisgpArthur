@@ -29,6 +29,16 @@ function validaMail($email)
 
 $email = $_POST['email']; // $_GET['email']; //
 $senha = $_POST['senha']; // $_GET['senha']; //
+$ipaddress = $_POST['ipaddress'];
+$moreInformations = $_POST['moreInformations'];
+$ObInf = json_decode($moreInformations, true);
+
+echo $ipaddress.'<br>';
+echo $ObInf['navegador'].'<br>';
+echo $ObInf['sistemaOperacional'].'<br>';
+echo $ObInf['totalCoresProcessador'].'<br>';
+echo $ObInf['memoriaAproximadaGB'].'<br>';
+
 if ($log) {
     echo '<p>Email:'.$email.' <br>Senha: '.$senha.' </p>';
 }

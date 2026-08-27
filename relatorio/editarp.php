@@ -62,6 +62,11 @@ foreach ($anexados as $att) {
 }
 $anex .= '</ul>';
 
+// $msgSolicitacoAlteracao = '';
+// if ($relatorio->last_result == 'r') {
+//    include __DIR__.'/includes/msgAlteração.php';
+// }
+
 $cursosetor = '';
 
 if (Colegiado::getRegistro($obProjeto->para_avaliar) instanceof Colegiado) {

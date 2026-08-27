@@ -133,7 +133,7 @@ form.addEventListener('submit', (e) => {
   }
 });
 
-</script>
+</script> 
 
 <?php
 
