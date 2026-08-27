@@ -11,6 +11,7 @@ class LogConnect
     public $sessao;
     public $sistema;
     public $dt_connection;
+    public $tp_connection;
     public $ip;
     public $navegador;
     public $so;
@@ -18,18 +19,6 @@ class LogConnect
     public $mem_aporx_gb;
     public $atividades;
 
-    /*
-        public function __construct($table = null)
-        {
-            $this->table = $table;
-            $env = new LerDot();
-            $this->host = $env::get('HOST');
-            $this->name = $env::get('NAME');
-            $this->user = $env::get('USER');
-            $this->pass = $env::get('PASS');
-            $this->setConnection();
-        }
-    */
     /**
      * Método responsável por cadastrar uma nova pessoa no banco.
      *
@@ -42,9 +31,10 @@ class LogConnect
 
         return $obDatabase->insert([
             'conta' => $this->conta,
-            'sessao' => $this->sessao,
+            // 'sessao' => $this->sessao,
             'sistema' => $this->sistema,
             // 'dt_connection'  => $this->dt_connection, get datetime by DB
+            'tp_connection' => $this->tp_connection,
             'ip' => $this->ip,
             'navegador' => $this->navegador,
             'so' => $this->so,
@@ -66,6 +56,7 @@ class LogConnect
             'sessao' => $this->sessao,
             'sistema' => $this->sistema,
             // 'dt_connection'  => $this->dt_connection, get datetime by DB
+            'tp_connection' => $this->tp_connection,
             'ip' => $this->ip,
             'navegador' => $this->navegador,
             'so' => $this->so,
@@ -95,7 +86,7 @@ class LogConnect
      */
     public static function gets($where = null, $order = null, $limit = null)
     {
-        return (new Database('agelogconnectntes'))->select($where, $order, $limit)
+        return (new Database('logconnect'))->select($where, $order, $limit)
                                       ->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 
