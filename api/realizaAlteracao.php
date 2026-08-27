@@ -89,7 +89,7 @@ if ($resultado === 'a') {
     $projetos = Projeto::getProjeto($idproj, $verProj);
     $projetos->$campoAlterado = $dado_novo;
 
-    if ($projetos->atualizar() == 1) {
+    if ($projetos->atualizar()) {
         updateAdendos($validador_id, $validador_nome, $validador_cargo, $email_ca, $mensagem_validador, $resultado);
         // Envio de email de confirmação
         $enviado = $email->analiseAlteracaoPropostas(
@@ -99,7 +99,7 @@ if ($resultado === 'a') {
             $user['email']
         );
 
-        if ($enviado == 'avaliador' || $enviado == 'autor' || $enviado == 'novo autor') {
+        if ($enviado == 'avaliador' || $enviado == 'autor' || $enviado == 'novoAutor') {
             $_SESSION['msg'] = 'Erro ao enviar e-mail de confirmação para o '.$enviado.' da proposta';
         }
         $_SESSION['msg'] = 'Avaliação realizada com sucesso!';

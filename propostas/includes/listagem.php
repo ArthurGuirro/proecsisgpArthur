@@ -1014,7 +1014,6 @@ echo '</script>';
       // console.log("Stt:", res.status);
       // console.log("R:", res);
 
-
       let data;
 
       try {
