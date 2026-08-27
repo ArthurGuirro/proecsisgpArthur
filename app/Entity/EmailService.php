@@ -52,8 +52,10 @@ class EmailService
         time_nanosleep(0, 900000000);
 
         $obDatabase = new Database('mailsmsgs');
+
         if (
-            $this->id = $obDatabase->insert([
+            // Pega negação de negação pq o insert retorna FALSE quando cadastra
+            !$this->id = $obDatabase->insert([
                 'destinatario' => $dados['destinatario'],
                 'nome' => $dados['nome'],
                 'sistema' => $this->sistema,
@@ -200,20 +202,24 @@ class EmailService
             'idref' => $dados['idref'],
         ];
 
-        if ($dados['avaliador']) {
-            $dadosAvaliador = array_merge($insert, $dados['avaliador']);
-            $arrEnviadosAvaliador = $this->enviar($dadosAvaliador);
-        }
+        $return = null;
 
-        if ($dados['autor']) {
+        if (!empty($dados['autor'])) {
             $dadosAutor = array_merge($insert, $dados['autor']);
-            $arrEnviadosAutor = $this->enviar($dadosAutor);
+            if (!$this->enviar($dadosAutor)) {
+                $return = 'autor';
+            }
         }
 
-        if ($arrEnviadosAvaliador == '0') {
-            return 'avaliador';
-        } elseif ($arrEnviadosAutor == '0') {
-            return 'autor';
+        if (!empty($dados['avaliador'])) {
+            $dadosAvaliador = array_merge($insert, $dados['avaliador']);
+            if (!$this->enviar($dadosAvaliador)) {
+                $return = 'avaliador';
+            }
+        }
+
+        if (!empty($return)) {
+            return $return;
         } else {
             return 'passou';
         }
@@ -236,27 +242,29 @@ class EmailService
             'idref' => $dados['idref'],
         ];
 
-        if ($dados['avaliador']) {
-            $dadosAvaliador = array_merge($insert, $dados['avaliador']);
-            $arrEnviadosAvaliador = $this->enviar($dadosAvaliador);
-        }
-
         if ($dados['autor']) {
             $dadosAutor = array_merge($insert, $dados['autor']);
-            $arrEnviadosAutor = $this->enviar($dadosAutor);
+            if (!$this->enviar($dadosAutor)) {
+                $return = 'autor';
+            }
         }
 
         if ($dados['novoAutor']) {
             $dadosNovoAutor = array_merge($insert, $dados['novoAutor']);
-            $arrEnviadosNovoAutor = $this->enviar($dadosNovoAutor);
+            if (!$this->enviar($dadosNovoAutor)) {
+                $return = 'novoAutor';
+            }
         }
 
-        if ($arrEnviadosAvaliador == '0') {
-            return 'avaliador';
-        } elseif ($arrEnviadosAutor == '0') {
-            return 'autor';
-        } elseif ($arrEnviadosNovoAutor == '0') {
-            return 'novoAutor';
+        if ($dados['avaliador']) {
+            $dadosAvaliador = array_merge($insert, $dados['avaliador']);
+            if (!$this->enviar($dadosAvaliador)) {
+                $return = 'avaliador';
+            }
+        }
+
+        if (!empty($return)) {
+            return $return;
         } else {
             return 'passou';
         }
