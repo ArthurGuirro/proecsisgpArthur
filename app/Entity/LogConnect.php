@@ -29,6 +29,8 @@ class LogConnect
         // INSERIR A REGISTRO NO BANCO
         $obDatabase = new Database('logconnect');
 
+        $this->mem_aporx_gb == 'Não disponível' ? 'n/a' : $this->mem_aporx_gb;
+
         return $obDatabase->insert([
             'conta' => $this->conta,
             // 'sessao' => $this->sessao,

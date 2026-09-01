@@ -1,5 +1,8 @@
 <?php
 
+echo 'Tempo de vida no servidor (gc_maxlifetime): '.ini_get('session.gc_maxlifetime').' segundos<br>';
+echo 'Tempo de vida no navegador (cookie_lifetime): '.ini_get('session.cookie_lifetime').' segundos';
+
 session_start();
 
 if (!empty($_SESSION)) {

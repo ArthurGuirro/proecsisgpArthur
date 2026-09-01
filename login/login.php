@@ -36,7 +36,6 @@ $ObInf = json_decode($moreInformations, true);
 
 $logConnect = new LogConnect();
 $logConnect->conta = $email;
-// $logConnect->sessao        =
 $logConnect->sistema = 'proec';
 $logConnect->ip = $ipaddress;
 $logConnect->navegador = $ObInf['navegador'];
