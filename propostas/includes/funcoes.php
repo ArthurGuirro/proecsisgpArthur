@@ -410,7 +410,8 @@ function ressubmit($p, $user)
     $i = $p->id;
     $v = $p->ver;
     // $t = $p->titulo;
-    $form = Outros::q("select form from avalia_last al where al.id_proj = '".$i."'")->form;
+    $form = Outros::q("select form from avalia_last al where al.id_proj = '".$i."'");
+    $form == null ? $form = '' : $form = $form->form;
 
     // $profId = $p->id_prof;
     // $userId = $user['id'];
