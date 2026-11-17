@@ -154,7 +154,7 @@
           <div class="col-3">
             <div class="form-group">
               <label>Início vigência</label>
-              <input type="date" name="vigen_ini" id="vigen_ini" class="form-control" value="<?php echo substr($obProjeto->vigen_ini, 0, 10); ?>" required>
+              <input type="date" name="vigen_ini" id="vigen_ini" class="form-control" value="<?php echo substr($obProjeto->vigen_ini, 0, 10); ?>" <?php echo $dataMin; ?>required>
             </div>
           </div>
           

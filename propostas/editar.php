@@ -18,6 +18,11 @@ use App\Entity\Projeto;
 
 $user = Login::getUsuarioLogado();
 
+$hoje = new DateTimeImmutable(date('Y-m-d'));
+$dataMoreDay = $hoje->modify('+22 days');
+$dataMin = $dataMoreDay->format('Y-m-d');
+$dataMin = ' min="'.$dataMin.'" ';
+
 $mensagem = '';
 if (isset($_GET['status'])) {
     switch ($_GET['status']) {

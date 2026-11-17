@@ -198,8 +198,8 @@
       <div class="row">
         <div class="col-3">
           <div class="form-group">
-            <label>Início vigência</label>
-            <input type="date" name="vigen_ini" id="vigen_ini" class="form-control" value="<?php echo substr($obProjeto->vigen_ini, 0, 10); ?>" required>
+            <label>Início vigência<sup>1</sup></label>
+            <input type="date" name="vigen_ini" id="vigen_ini" class="form-control" value="<?php echo substr($obProjeto->vigen_ini, 0, 10); ?>"  <?php echo $dataMin; ?>  required>
           </div>
         </div>
 
@@ -212,7 +212,7 @@
 
         <div class="col-3">
           <div class="form-group">
-            <label>Carga semanal*:</label>
+            <label>Carga semanal<sup>2</sup>:</label>
             <input type="number" min=0 max=44 class="form-control" name="ch_semanal" value="<?php echo $obProjeto->ch_semanal; ?>">
 
           </div>
@@ -227,7 +227,8 @@
             </select>
           </div>
         </div>
-        <span class="badge badge-light">* Indicar a CH a ser computada no PAD, cf. regulamento próprio de distribuição de carga horária da Unespar.</span>
+        <span class="badge badge-light"><sup>1</sup> Indicar a CH a ser computada no PAD, cf. regulamento próprio de distribuição de carga horária da Unespar.</span><br>
+        <span class="badge badge-light"><sup>2</sup> Indicar a CH a ser computada no PAD, cf. regulamento próprio de distribuição de carga horária da Unespar.</span>
       </div>
 
       <hr>

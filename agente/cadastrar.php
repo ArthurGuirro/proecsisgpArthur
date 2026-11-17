@@ -32,11 +32,11 @@ if (isset($_POST['nome'])) {
     $obAgente->cat_func = $_POST['cat_func'];
     $obAgente->ativo = $_POST['ativo'];
     $obAgente->user = $user['id'];
-    // if (strlen($_POST['senha']) > 0) {
-    //  if ($_POST['senha'] !== null && $_POST['senha'] !== '') {
-    //      $obAgente->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-    //  }
-    //
+    if (strlen($_POST['senha']) > 0) {
+        if ($_POST['senha'] !== null && $_POST['senha'] !== '') {
+            $obAgente->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+        }
+    }
     $obAgente->cadastrar();
 
     header('location: ../professor/index.php?status=success');

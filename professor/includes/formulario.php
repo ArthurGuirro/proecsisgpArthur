@@ -158,20 +158,13 @@ $user = Login::getUsuarioLogado();
         </div>
      </div>
      <div class="col">
-        <!--  <div class="form-group">
-        
+          <div class="form-group">
+          <label>Senha <?php echo TITLE != 'Cadastrar professor' ? '<span class="badge badge-warning">Não mexa para não alterá-la</span>' : null; ?> </label>
          <input type="password" class="form-control" name="senha" >
        </div>
      </div>
-     <div class="col">
-      < ?php  $padsv; ?>
     
-        <div class="form-group">
-         <label>.</label>
-         <input type="password" class="form-control" name="csenha" disabled>
-       </div>
-     </div> 
-     -->
+     
       <?php echo $padsv; ?>
       
     </div>

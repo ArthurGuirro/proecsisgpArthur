@@ -43,6 +43,10 @@ foreach ($relPendentes as $p) {
     }
 }
 
+$dataMin = '';
+$hoje = date('Y-m-d');
+$dataMin = ' min="'.$hoje.'" ';
+
 $inadAlert = '';
 $inadDisable = '';
 
